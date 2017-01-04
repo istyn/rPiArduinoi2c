@@ -15,7 +15,7 @@ GPIO.setup(21, GPIO.OUT)
 def my_callback(channel):  
     print "Rising edge detected on port 24 - even though, in the main thread,"  
     print "we are still waiting for a falling edge - how cool?\n"
-    RPi.GPIO.output(21, True)
+    GPIO.output(21, True)
   
 print "Make sure you have a button connected so that when pressed"  
 print "it will connect GPIO port 23 (pin 16) to GND (pin 6)\n"  
