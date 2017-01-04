@@ -17,10 +17,10 @@ state = 0
 def my_callback(channel):  
     print "Rising edge detected on port 24 - even though, in the main thread,"  
     print "we are still waiting for a falling edge - how cool?\n"
-    if (state = 0):
+    if state == 0:
         GPIO.output(21, True)
         state = 1
-    else
+    else:
         GPIO.output(21, False)
         state = 0
   
