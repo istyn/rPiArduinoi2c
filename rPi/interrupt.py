@@ -1,4 +1,3 @@
-#!/usr/bin/env python2.7  
 # script by Alex Eames http://RasPi.tv  
   
 import RPi.GPIO as GPIO  
@@ -15,20 +14,20 @@ state = 0
 # now we'll define the threaded callback function  
 # this will run in another thread when our event is detected  
 def my_callback(channel):  
-    print "Rising edge detected on port 24 - even though, in the main thread,"  
-    print "we are still waiting for a falling edge - how cool?\n"
+    global state
+    print ("Rising edge detected on port 24 - even though, in the main thread,")  
+    print ("we are still waiting for a falling edge - how cool?\n")
     if state == 0:
         GPIO.output(21, True)
         state = 1
     else:
         GPIO.output(21, False)
         state = 0
-  
-print "Make sure you have a button connected so that when pressed"  
-print "it will connect GPIO port 23 (pin 16) to GND (pin 6)\n"  
-print "You will also need a second button connected so that when pressed"  
-print "it will connect GPIO port 24 (pin 18) to 3V3 (pin 1)"  
-raw_input("Press Enter when ready\n>")  
+print ("Make sure you have a button connected so that when pressed")  
+print ("it will connect GPIO port 23 (pin 16) to GND (pin 6)\n"  )
+print ("You will also need a second button connected so that when pressed")  
+print ("it will connect GPIO port 24 (pin 18) to 3V3 (pin 1)")  
+input("Press Enter when ready\n>")  
   
 # The GPIO.add_event_detect() line below set things up so that  
 # when a rising edge is detected on port 24, regardless of whatever   
@@ -38,9 +37,9 @@ raw_input("Press Enter when ready\n>")
 GPIO.add_event_detect(24, GPIO.FALLING, callback=my_callback, bouncetime=200)  
   
 try:  
-    print "Waiting for falling edge on port 23"  
+    print ("Waiting for falling edge on port 23"  )
     GPIO.wait_for_edge(23, GPIO.FALLING)  
-    print "Falling edge detected. Here endeth the second lesson."  
+    print ("Falling edge detected. Here endeth the second lesson.")  
   
 except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
