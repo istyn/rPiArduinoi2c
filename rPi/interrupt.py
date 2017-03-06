@@ -27,8 +27,7 @@ print ("Make sure you have a button connected so that when pressed")
 print ("it will connect GPIO port 23 (pin 16) to GND (pin 6)\n"  )
 print ("You will also need a second button connected so that when pressed")  
 print ("it will connect GPIO port 24 (pin 18) to 3V3 (pin 1)")  
-input("Press Enter when ready\n>")  
-  
+input("Press Enter when ready\n>")
 # The GPIO.add_event_detect() line below set things up so that  
 # when a rising edge is detected on port 24, regardless of whatever   
 # else is happening in the program, the function "my_callback" will be run  
@@ -43,4 +42,4 @@ try:
   
 except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
-GPIO.cleanup()           # clean up GPIO on normal exit  
+GPIO.cleanup()           # clean up GPIO on normal exit
