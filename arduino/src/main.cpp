@@ -43,7 +43,7 @@ void sendData(){
   val=analogRead(0);      //Read the analog port 0 and store the value in val
   temp=Thermister(val);   //Runs the fancy math on the raw analog value
   Serial.println(temp);   //Print the value to the serial port
-Wire.write((int)temp);
+Wire.write(int(temp));
 //Serial.println(number);
 }
 
@@ -56,10 +56,14 @@ Wire.begin(SLAVE_ADDRESS);
 // define callbacks for i2c communication
 //Wire.onReceive(receiveData);
 Wire.onRequest(sendData);
-
 Serial.println("Ready");
 }
+int foo = 0;
 
 void loop() {
-delay(1000);
+
+delay(100);
+
+Serial.println(foo++);
+
 }
